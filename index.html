@@ -185,63 +185,68 @@
       </div>
     </nav>
 
-    <div class="ftco-section ftco-hireme img margin-top"
-     style="background-color: black; background-image: url(images/bg_0.png); background-size: cover; background-position: center; background-attachment: fixed; position: relative; z-index: 0;">
-      <section id="home-section" class="hero" style="position: relative; z-index: 1;">
-        <div class="container">
-          <div class="row d-flex align-items-center">
-            <!-- Left Column: Intro + Buttons -->
-            <div class="col-md-6 d-flex flex-column justify-content-center">
-              <span class="subheading" style="font-weight: bold;">Hello!</span>
-              <h1 class="mb-4 mt-3">I'm <span>Shubodaya</span></h1>
+      <div class="ftco-section ftco-hireme img margin-top"
+          style="background: 
+                  linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 10%), 
+                  url('images/bg_0.png');
+                  background-size: cover;
+                  background-position: center;
+                  background-attachment: fixed;
+                  position: relative;
+                  z-index: 0;">
+        <section id="home-section" class="hero" style="position: relative; z-index: 1;">
+          <div class="container">
+            <div class="row d-flex align-items-center">
+              <!-- Left Column: Intro + Buttons -->
+              <div class="col-md-6 d-flex flex-column justify-content-center">
+                <span class="subheading" style="font-weight: bold;">Hello!</span>
+                <h1 class="mb-4 mt-3">I'm <span>Shubodaya</span></h1>
 
-              <!-- Typing Animation -->
-              <span id="typing-animation"></span>
+                <!-- Typing Animation -->
+                <span id="typing-animation"></span>
 
-              <div class="mt-4">
-                <a href="https://drive.google.com/file/d/1t87kuPPaZn5gtye67Uwl3anHkwOakYcO/view?usp=sharing" 
-                  class="btn btn-success py-3 px-4 mr-3" target="_blank" rel="noopener noreferrer">Resume</a>
-                  
-                <a href="https://www.linkedin.com/in/shubodaya/" 
-                  class="btn btn-dark py-3 px-4" target="_blank" rel="noopener noreferrer">My Linkedin</a>
+                <div class="mt-4">
+                  <a href="https://drive.google.com/file/d/1t87kuPPaZn5gtye67Uwl3anHkwOakYcO/view?usp=sharing" 
+                    class="btn btn-success py-3 px-4 mr-3" target="_blank" rel="noopener noreferrer">Resume</a>
+                  <a href="https://www.linkedin.com/in/shubodaya/" 
+                    class="btn btn-dark py-3 px-4" target="_blank" rel="noopener noreferrer">My Linkedin</a>
+                </div>
+              </div>
+
+              <!-- Right Column: Another Image -->
+              <div id="bg-img-col" class="col-md-6 scroll-animate" 
+                  style="background-image: url('images/first.png'); background-size: cover; background-position: center; min-height: 500px; pointer-events: none;">
               </div>
             </div>
-
-            <!-- Right Column: Background Image -->
-            <div 
-              id="bg-img-col" 
-              class="col-md-6 scroll-animate" 
-              style="background-image: url('images/first.png'); background-size: cover; background-position: center; min-height: 500px; pointer-events: none;">
-            </div>
           </div>
-        </div>
-      </section>
-    </div>
+        </section>
+      </div>
+
 
 
      <script>
-const element = document.getElementById('typing-animation');
-const text = 'Network Security Engineer     ';
-let index = 0;
+        const element = document.getElementById('typing-animation');
+        const text = 'Network Security Engineer     ';
+        let index = 0;
 
-function type() {
-  element.textContent = text.slice(0, index + 1);
-  index++;
-  if (index < text.length) {
-    setTimeout(type, 10); // typing speed
-  } else {
-    // Wait 2 seconds after finishing before restarting
-    setTimeout(() => {
-      index = 0;
-      element.textContent = '';
-      type();
-    }, 5000); // 2-second pause
-  }
-}
+        function type() {
+          element.textContent = text.slice(0, index + 1);
+          index++;
+          if (index < text.length) {
+            setTimeout(type, 10); // typing speed
+          } else {
+            // Wait 2 seconds after finishing before restarting
+            setTimeout(() => {
+              index = 0;
+              element.textContent = '';
+              type();
+            }, 5000); // 2-second pause
+          }
+        }
 
-// Start typing
-type();
-</script>
+        // Start typing
+        type();
+        </script>
 
 
 
@@ -339,7 +344,7 @@ type();
         </div>
       </div>
     </section>
-       
+
 <br><br><br>
    
 
@@ -367,33 +372,43 @@ type();
           </div>
         </div>
       </div>
-</div>
-      <div class="ftco-section ftco-hireme img margin-top" style="background-image: url(images/bg_1.jpg)">
-        <!-- <div class="container"> -->
-        <div class="row justify-content-center">
-          <div class="col-md-7 ftco-animate text-center">
-            <h2>Here's my<span>
-                <button id="gitbtn" class="btn btn-light py-3 px-5" onclick="gitClick()">GitHub</button>
-              </span>
-            </h2>
-            <div class="heading">
-              <h4>
-                Explore my Projects.
-              </h4>
-              <br>
+    </div>
+      
+    </section>
+
+    <!-- GitHub Section -->
+       <section class="ftco-section ftco-no-pb" id="github-section">
+          <div class="ftco-section ftco-hireme img margin-top" 
+              style="background-image: url(images/bg_1.jpg); 
+                      background-size: cover; 
+                      background-position: center; 
+                      background-attachment: fixed;
+                      position: relative;   /* important */
+                      z-index: 10;">       <!-- higher than canvas -->
+            <div class="row justify-content-center">
+              <div class="col-md-7 ftco-animate text-center">
+                <h2>Here's my 
+                  <span>
+                    <a href="https://github.com/shubodaya" target="_blank" rel="noopener noreferrer" class="btn btn-white py-3 px-4">
+                      GitHub
+                    </a>
+                  </span>
+                </h2>
+                <div class="heading">
+                  <h4>Explore my Projects.</h4>
+                  <br>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        <!-- </div> -->
-      </div>
-    </section>
+        </section>
 
 
 
     <br><br><br>
 
-    
-    </div> 
+
+
     <!-- Contact Me Section -->
     <section class="ftco-section contact-section ftco-no-pb" id="contact-section">
           <div class="container">
@@ -413,7 +428,7 @@ type();
                               <span class="icon-map-signs"></span>
                           </div>
                           <h3 class="mb-4">Address</h3>
-                          <p>England, UK</p>
+                          <p>Swansea, Wales, UK</p>
                       </div>
                   </div>
                   <div class="col-md-6 col-lg-3 d-flex ftco-animate">
@@ -583,11 +598,8 @@ type();
       <script src="js/scrollax.min.js"></script>
       <script type= "module" src="js/model.js"></script>
       <script src="js/main.js"></script>
-      <script>
-        function gitClick() {
-          window.location.href = 'https://github.com/shubodaya';
-        }
-      </script>
+    
+
       
       
 
