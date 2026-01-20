@@ -9,7 +9,7 @@ export default function Navbar() {
       <div className="container">
         <Link className="navbar-brand d-flex align-items-center" to="/">
           <img
-            src="/favicon_io/favicon-32x32.png"
+            src="/portfolio-sec-3d/favicon_io/favicon-32x32.png"
             alt="Shubodaya H N"
             className="brand-icon"
             width="20"
