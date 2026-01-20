@@ -8,7 +8,17 @@
 function createBinaryRainForResume() {
   const container = document.querySelector('.binary-bg-container');
   const canvas = document.getElementById('binary-resume-canvas');
+  if (!container || !canvas) {
+    return;
+  }
+  if (canvas.dataset.binaryRain === '1') {
+    return;
+  }
   const ctx = canvas.getContext('2d');
+  if (!ctx) {
+    return;
+  }
+  canvas.dataset.binaryRain = '1';
 
   canvas.width = container.clientWidth;
   canvas.height = container.clientHeight;
@@ -17,27 +27,48 @@ function createBinaryRainForResume() {
   canvas.style.left = 0;
   canvas.style.zIndex = 0;
 
-  const fontSize = 48; // bigger font
-  const columns = Math.floor(canvas.width / fontSize);
-  const drops = Array(columns).fill(1);
-  const binaryChars = ['0', '1'];
+  const baseFont = 22;
+  const columnWidth = 28;
+  const columns = Math.floor(canvas.width / columnWidth);
+  const drops = Array(columns).fill(0);
+  const speeds = Array(columns)
+    .fill(0)
+    .map(() => 0.25 + Math.random() * 0.7);
+  const sizes = Array(columns)
+    .fill(0)
+    .map(() => baseFont * (0.65 + Math.random() * 1.25));
+  const glowColor = '0, 165, 255';
 
   function draw() {
-    ctx.fillStyle = 'rgba(0, 0, 0, 0.1)'; // subtle fade for trail effect
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.18)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    ctx.fillStyle = 'rgba(0, 191, 255, 0.15)'; // faded light blue
-    ctx.font = fontSize + 'px monospace';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'top';
 
     for (let i = 0; i < drops.length; i++) {
-      const text = binaryChars[Math.floor(Math.random() * binaryChars.length)];
-      ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+      const size = sizes[i];
+      const x = i * columnWidth + columnWidth * 0.5;
+      const y = drops[i] * size;
+      const text = Math.random() > 0.55 ? '0' : '1';
 
-      if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-        drops[i] = 0;
+      ctx.font = `${size}px monospace`;
+      ctx.fillStyle = `rgba(${glowColor}, 0.75)`;
+      ctx.fillText(text, x, y);
+
+      const trailY = y - size * 1.6;
+      if (trailY > 0 && Math.random() > 0.35) {
+        ctx.fillStyle = `rgba(${glowColor}, 0.2)`;
+        ctx.fillText(Math.random() > 0.55 ? '0' : '1', x, trailY);
       }
 
-      drops[i] += 0.2; // slow falling
+      drops[i] += speeds[i];
+
+      if (y > canvas.height + size * 2) {
+        drops[i] = Math.random() * -20;
+        speeds[i] = 0.25 + Math.random() * 0.7;
+        sizes[i] = baseFont * (0.65 + Math.random() * 1.25);
+      }
     }
 
     requestAnimationFrame(draw);
@@ -51,9 +82,11 @@ function createBinaryRainForResume() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+function initBinaryRain() {
   createBinaryRainForResume();
-});
+}
+
+document.addEventListener('DOMContentLoaded', initBinaryRain);
 
 
 
@@ -289,6 +322,11 @@ document.addEventListener('DOMContentLoaded', () => {
 	};
 	contentWayPoint();
 
+  window.initPortfolioWaypoints = function() {
+    counter();
+    contentWayPoint();
+  };
+
 	// magnific popup
 	$('.image-popup').magnificPopup({
     type: 'image',
@@ -327,60 +365,68 @@ document.addEventListener('DOMContentLoaded', () => {
 })(jQuery);
 
 
-$(document).ready(function() {
-    // Dynamic movement for project tiles
-    const projectTileMovement = function() {
-        // Query all elements with the class 'project-tile'
-        const projectTiles = document.querySelectorAll('.project-tile');
+function projectTileMovement() {
+    const projectTiles = document.querySelectorAll('.project-tile');
 
-        // Add mousemove event to each tile
-        projectTiles.forEach(tile => {
-            tile.addEventListener('mousemove', (e) => {
-                // Get the tile's dimensions and position
-                const tileRect = tile.getBoundingClientRect();
+    projectTiles.forEach(tile => {
+        if (tile.dataset.motionBound === '1') {
+            return;
+        }
+        tile.dataset.motionBound = '1';
+        tile.addEventListener('mousemove', (e) => {
+            const tileRect = tile.getBoundingClientRect();
+            const xPos = e.clientX - tileRect.left;
+            const yPos = e.clientY - tileRect.top;
+            const moveX = (xPos / tileRect.width - 0.5) * 20;
+            const moveY = (yPos / tileRect.height - 0.5) * 20;
 
-                // Calculate relative mouse position within the tile
-                const xPos = e.clientX - tileRect.left;
-                const yPos = e.clientY - tileRect.top;
-
-                // Calculate the transformation amount based on mouse position (adjusting the sensitivity here)
-                const moveX = (xPos / tileRect.width - 0.5) * 20; // Horizontal movement
-                const moveY = (yPos / tileRect.height - 0.5) * 20; // Vertical movement
-
-                // Apply the transformation (translate)
-                tile.style.transform = `translate(${moveX}px, ${moveY}px)`;
-            });
-
-            // Reset the transform when the mouse leaves the tile
-            tile.addEventListener('mouseleave', () => {
-                tile.style.transform = 'translate(0, 0)';
-            });
+            tile.style.transform = `translate(${moveX}px, ${moveY}px)`;
         });
-    };
 
-    // Call the function when the document is ready
+        tile.addEventListener('mouseleave', () => {
+            tile.style.transform = 'translate(0, 0)';
+        });
+    });
+}
+
+$(document).ready(function() {
     projectTileMovement();
 });
 
 
-document.addEventListener('DOMContentLoaded', () => {
-    createStars('.starry-background'); // Create stars for the bottom container
-});
+function initStars() {
+    const containers = document.querySelectorAll('.starry-background');
+    containers.forEach((container) => {
+        createStars(container);
+    });
+}
 
-function createStars(containerSelector) {
-    const starryBackground = document.querySelector(containerSelector);
-    const numberOfStars = 100; // Adjust as needed
+document.addEventListener('DOMContentLoaded', initStars);
+
+function createStars(containerOrSelector) {
+    const starryBackground = typeof containerOrSelector === 'string'
+        ? document.querySelector(containerOrSelector)
+        : containerOrSelector;
+    if (!starryBackground) {
+        return;
+    }
+    if (starryBackground.dataset.starsReady === '1') {
+        return;
+    }
+    starryBackground.dataset.starsReady = '1';
+    const numberOfStars = 260;
 
     for (let i = 0; i < numberOfStars; i++) {
         const star = document.createElement('div');
         star.classList.add('star');
 
         // Randomize the position of the star within the container
-        const xPos = Math.random() * window.innerWidth;
-        const yPos = Math.random() * starryBackground.clientHeight; // Limit y position to container height
+        const xPos = Math.random() * starryBackground.clientWidth;
+        const yPos = Math.random() * starryBackground.clientHeight;
 
         // Randomize the size of the star
-        const starSize = Math.random() * 3 + 1; // Size between 1 and 4 pixels
+        const starSize = Math.random() * 2.2 + 0.6;
+        const depth = Math.random();
 
         // Apply styles
         star.style.width = `${starSize}px`;
@@ -389,8 +435,11 @@ function createStars(containerSelector) {
         star.style.top = `${yPos}px`;
 
         // Randomize the animation delay for twinkling
-        const randomDelay = Math.random() * 4; // Random delay between 0 and 4 seconds
-        star.style.animation = `twinkle ${randomDelay}s infinite ease-in-out, move 3s infinite alternate`; // Apply twinkle animation
+    const twinkleSpeed = 2 + Math.random() * 4;
+    const driftSpeed = 8 + Math.random() * 14;
+        star.style.opacity = `${0.25 + Math.random() * 0.65}`;
+        star.style.transform = `scale(${0.6 + depth * 0.8})`;
+        star.style.animation = `twinkle ${twinkleSpeed}s infinite ease-in-out, move ${driftSpeed}s infinite alternate`;
 
         // Append the star to the background
         starryBackground.appendChild(star);
@@ -398,23 +447,30 @@ function createStars(containerSelector) {
 }
 
 
-document.addEventListener('DOMContentLoaded', () => {
+function initHeroImageObserver() {
   const target = document.getElementById('bg-img-col');
+  if (!target) {
+    return;
+  }
+  if (target.dataset.bgObserved === '1') {
+    return;
+  }
+  target.dataset.bgObserved = '1';
 
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        // Add class to animate
         target.classList.add('visible');
       } else {
-        // Remove class so animation can restart when re-entering viewport
         target.classList.remove('visible');
       }
     });
   });
 
   observer.observe(target);
-});
+}
+
+document.addEventListener('DOMContentLoaded', initHeroImageObserver);
 
 function createShootingStar() {
     const starContainer = document.querySelector('.starry-background');
@@ -424,11 +480,21 @@ function createShootingStar() {
     shootingStar.classList.add('shooting-star');
 
     // Random starting position near top-left
-    const startX = Math.random() * window.innerWidth * 0.5;
-    const startY = Math.random() * window.innerHeight * 0.3;
+    const bounds = starContainer.getBoundingClientRect();
+    const startX = Math.random() * bounds.width * 0.4;
+    const startY = Math.random() * bounds.height * 0.4;
+    const travel = 200 + Math.random() * 260;
+    const angle = -35 - Math.random() * 20;
+    const rad = (angle * Math.PI) / 180;
+    const travelX = Math.cos(rad) * travel;
+    const travelY = Math.sin(rad) * travel;
 
-    shootingStar.style.left = startX + 'px';
-    shootingStar.style.top = startY + 'px';
+    shootingStar.style.left = `${startX}px`;
+    shootingStar.style.top = `${startY}px`;
+    shootingStar.style.width = `${travel}px`;
+    shootingStar.style.setProperty('--shoot-rotate', `${angle}deg`);
+    shootingStar.style.setProperty('--shoot-x', `${travelX}px`);
+    shootingStar.style.setProperty('--shoot-y', `${travelY}px`);
 
     starContainer.appendChild(shootingStar);
 
@@ -438,8 +504,42 @@ function createShootingStar() {
     });
 }
 
-// Create a shooting star every 5–10 seconds randomly
-setInterval(createShootingStar, Math.random() * 5000 + 5000);
+let shootingTimer = null;
+
+function startShootingStars() {
+    if (shootingTimer) {
+        return;
+    }
+    const schedule = () => {
+        createShootingStar();
+        const next = 2500 + Math.random() * 3000;
+        shootingTimer = setTimeout(schedule, next);
+    };
+    schedule();
+}
+
+function stopShootingStars() {
+    if (!shootingTimer) {
+        return;
+    }
+    clearTimeout(shootingTimer);
+    shootingTimer = null;
+}
+
+    const shootingObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                startShootingStars();
+            } else {
+                stopShootingStars();
+            }
+        });
+    });
+
+const starContainer = document.querySelector('.starry-background[data-shooting="true"]');
+if (starContainer) {
+    shootingObserver.observe(starContainer);
+}
 
 
 
@@ -448,8 +548,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const hint = document.getElementById('gaming-interaction-hint');
 
     if (gamingModelContainer && hint) {
-        gamingModelContainer.addEventListener('click', () => {
+        const hideHint = () => {
             hint.style.display = 'none';
-        });
+        };
+        gamingModelContainer.addEventListener('click', hideHint);
+        gamingModelContainer.addEventListener('pointerdown', hideHint);
+        gamingModelContainer.addEventListener('touchstart', hideHint, { passive: true });
     }
 });
+
+function initRouteEffects() {
+  initBinaryRain();
+  initStars();
+  initHeroImageObserver();
+  projectTileMovement();
+  if (window.initPortfolioWaypoints) {
+    window.initPortfolioWaypoints();
+  }
+}
+
+window.addEventListener('portfolio:route', initRouteEffects);

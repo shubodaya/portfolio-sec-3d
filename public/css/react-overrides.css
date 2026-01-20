@@ -1,0 +1,347 @@
+/* Inline styles consolidated for the React build. */
+
+/*======================================
+//--//-->   ABOUT
+======================================*/
+.about-mf .box-shadow-full {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.about-mf .about-img {
+  margin-bottom: 2rem;
+}
+
+.about-mf .about-img img {
+  margin-left: 10px;
+}
+
+.skill-mf .progress {
+  margin: 0.5rem 0 1.2rem;
+  border-radius: 0;
+  height: 0.7rem;
+}
+
+.skill-mf .progress .progress-bar {
+  height: 0.7rem;
+  background-color: #ffbd39;
+}
+
+/* Animation styles */
+#typing-animation {
+  position: relative;
+  font-size: 30px;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 3s steps(20, end) infinite;
+}
+
+#typing-animation:before {
+  content: "";
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: #ccc;
+  animation: typing-cursor 0.5s ease-in-out infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes typing-cursor {
+  from {
+    width: 5px;
+  }
+
+  to {
+    width: 0;
+  }
+}
+
+/* project image zoom effect */
+.zoom-effect {
+  overflow: hidden;
+  transition: transform 0.3s ease-out;
+}
+
+.zoom-effect:hover {
+  transform: scale(1.1);
+}
+
+@media screen and (orientation: portrait) {
+  body {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+  .order-md-last {
+    visibility: hidden;
+  }
+}
+
+/* About page mobile overflow fixes */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+html,
+body {
+  height: auto;
+  overflow-y: auto;
+}
+
+img,
+iframe,
+.container,
+.row,
+.col,
+.col-md-6,
+.col-lg-5,
+.col-lg-7 {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+section,
+div {
+  box-sizing: border-box;
+}
+
+.navbar-collapse {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+* {
+  word-wrap: break-word;
+}
+
+@media screen and (max-width: 768px) {
+  .row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .pl-lg-5 {
+    padding-left: 15px !important;
+  }
+
+  .pr-lg-5 {
+    padding-right: 15px !important;
+  }
+
+  .img-about {
+    margin-right: 0;
+  }
+}
+
+/* Layout centering and consistent gutters */
+:root {
+  --page-max-width: 1200px;
+  --page-gutter: 32px;
+}
+
+.container,
+.container-fluid {
+  padding-left: var(--page-gutter);
+  padding-right: var(--page-gutter);
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: var(--page-max-width);
+  }
+}
+
+@media (max-width: 768px) {
+  .container,
+  .container-fluid {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+/* Prevent inner scrolling/clip and keep hero visuals centered */
+.ftco-section,
+.hero,
+.binary-bg-container,
+.starry-background,
+#gaming-model-container,
+#model3-container {
+  overflow: visible;
+}
+
+/* Prevent nested scrollbars inside the app */
+#root {
+  overflow: visible;
+}
+
+#root * {
+  scrollbar-width: none;
+}
+
+#root *::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+#root .container,
+#root .container-fluid,
+#root .row,
+#root .col,
+#root [class^="col-"],
+#root [class*=" col-"],
+#root .ftco-section,
+#root .message-section,
+#root .contact-section,
+#root .binary-bg-container,
+#root .starry-background {
+  overflow: visible;
+}
+
+.starry-background {
+  width: 100%;
+  height: auto;
+  min-height: 100vh;
+  padding-bottom: 0;
+}
+
+/* Contact cards on a single row */
+.contact-section .contact-info {
+  justify-content: center;
+}
+
+@media (min-width: 992px) {
+  .contact-section .contact-info > [class*="col-"] {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+}
+
+.message-section {
+  padding-bottom: 0 !important;
+}
+
+.message-section .ftco-footer-social {
+  margin-bottom: 0;
+}
+
+.message-section .container {
+  padding-bottom: 0;
+}
+
+.message-section .row:last-child {
+  margin-bottom: 0;
+}
+
+#root > * {
+  overflow: visible;
+}
+
+#bg-img-col {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 460px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  text-transform: none;
+}
+
+#ftco-navbar .navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  line-height: 1;
+}
+
+#ftco-navbar .navbar-brand span {
+  display: inline-block;
+  line-height: 1;
+}
+
+#ftco-navbar .navbar-brand .brand-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  display: block;
+}
+
+#ftco-navbar .navbar-nav {
+  align-items: center;
+}
+
+@media (min-width: 992px) {
+  #ftco-navbar .navbar-nav {
+    flex-wrap: nowrap;
+  }
+
+  #ftco-navbar .nav-link {
+    padding: 0.9rem 0.7rem;
+    font-size: 15px;
+  }
+}
+
+/* Starfield tweaks */
+.starry-background .star {
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.95) 0%, rgba(120, 200, 255, 0.5) 45%, rgba(120, 200, 255, 0) 70%);
+  border-radius: 999px;
+  filter: blur(0.35px);
+  box-shadow:
+    0 0 6px rgba(120, 200, 255, 0.25),
+    0 0 12px rgba(120, 200, 255, 0.15);
+}
+
+.starry-background .shooting-star {
+  position: absolute;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(120, 200, 255, 0) 0%, rgba(120, 200, 255, 0.35) 55%, rgba(120, 200, 255, 0.95) 100%);
+  box-shadow: 0 0 6px rgba(120, 200, 255, 0.7);
+  transform-origin: 0 50%;
+  animation: shooting 1.2s ease-out forwards;
+}
+
+@keyframes shooting {
+  from {
+    opacity: 0;
+    transform: translate(0, 0) rotate(var(--shoot-rotate));
+  }
+  20% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translate(var(--shoot-x), var(--shoot-y)) rotate(var(--shoot-rotate));
+  }
+}
