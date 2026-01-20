@@ -1,4 +1,5 @@
 export default function Experience() {
+  const baseUrl = import.meta.env.BASE_URL;
   return (
     <div className="starry-background">
       <br />
@@ -6,7 +7,7 @@ export default function Experience() {
         <div className="container">
           <div
             className="ftco-section ftco-hireme img margin-top"
-            style={{ backgroundImage: "url('/images/third.png')" }}
+            style={{ backgroundImage: `url('${baseUrl}images/third.png')` }}
           ></div>
           <div className="row justify-content-center pb-5">
             <div className="col-md-10 heading-section text-center ftco-animate">

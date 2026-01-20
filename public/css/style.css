@@ -9821,7 +9821,7 @@ textarea.form-control {
 
 
 .col-md-6.col-lg-7 {
-  background-image: url('images/first.png');
+  background-image: url('../images/first.png');
   background-size: contain;  /* Ensures the whole image fits inside */
   background-position: center;
   background-repeat: no-repeat;

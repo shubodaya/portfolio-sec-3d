@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 export default function Home() {
+  const baseUrl = import.meta.env.BASE_URL;
   useEffect(() => {
     const element = document.getElementById("typing-animation");
     if (!element) {
@@ -43,8 +44,7 @@ export default function Home() {
       <div
         className="ftco-section ftco-hireme img margin-top"
         style={{
-          background:
-            "linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 10%), url('/images/bg_0.png')",
+          background: `linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 10%), url('${baseUrl}images/bg_0.png')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundAttachment: "fixed",
@@ -93,7 +93,7 @@ export default function Home() {
                 id="bg-img-col"
                 className="col-md-6 scroll-animate"
                 style={{
-                  backgroundImage: "url('/images/first.png')",
+                  backgroundImage: `url('${baseUrl}images/first.png')`,
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                   minHeight: "500px",
@@ -180,7 +180,7 @@ export default function Home() {
         <div className="container">
           <div
             className="ftco-section ftco-hireme img margin-top"
-            style={{ backgroundImage: "url('/images/second.png')" }}
+            style={{ backgroundImage: `url('${baseUrl}images/second.png')` }}
           ></div>
           <div className="row justify-content-center pb-5">
             <div className="col-md-10 heading-section text-center ftco-animate">
@@ -254,7 +254,7 @@ export default function Home() {
         <div
           className="ftco-section ftco-hireme img margin-top"
           style={{
-            backgroundImage: "url('/images/bg_1.jpg')",
+            backgroundImage: `url('${baseUrl}images/bg_1.jpg')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundAttachment: "fixed",

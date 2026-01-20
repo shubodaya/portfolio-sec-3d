@@ -1,4 +1,5 @@
 export default function Education() {
+  const baseUrl = import.meta.env.BASE_URL;
   return (
     <div className="starry-background">
       <section className="ftco-section ftco-no-pb" id="education-section">
@@ -45,7 +46,7 @@ export default function Education() {
             <br />
             <div
               className="ftco-section ftco-hireme img margin-top"
-              style={{ backgroundImage: "url('/images/server.png')" }}
+              style={{ backgroundImage: `url('${baseUrl}images/server.png')` }}
             ></div>
 
             <div className="row justify-content-center pb-5 mt-5">
@@ -67,7 +68,7 @@ export default function Education() {
                 >
                   <div className="resume-wrap ftco-animate text-center">
                     <img
-                      src="/images/networkplus.png"
+                      src={`${baseUrl}images/networkplus.png`}
                       alt="Network+"
                       style={{ width: "60px", height: "auto", marginBottom: "10px" }}
                     />
@@ -85,7 +86,7 @@ export default function Education() {
                 >
                   <div className="resume-wrap ftco-animate text-center">
                     <img
-                      src="/images/securityplus.png"
+                      src={`${baseUrl}images/securityplus.png`}
                       alt="Security+"
                       style={{ width: "60px", height: "auto", marginBottom: "10px" }}
                     />
@@ -103,7 +104,7 @@ export default function Education() {
                 >
                   <div className="resume-wrap ftco-animate text-center">
                     <img
-                      src="/images/isc2.png"
+                      src={`${baseUrl}images/isc2.png`}
                       alt="ISC2"
                       style={{ width: "60px", height: "auto", marginBottom: "10px" }}
                     />
@@ -121,7 +122,7 @@ export default function Education() {
                 >
                   <div className="resume-wrap ftco-animate text-center">
                     <img
-                      src="/images/az900.png"
+                      src={`${baseUrl}images/az900.png`}
                       alt="AZ-900"
                       style={{ width: "60px", height: "auto", marginBottom: "10px" }}
                     />
@@ -139,7 +140,7 @@ export default function Education() {
                 >
                   <div className="resume-wrap ftco-animate text-center">
                     <img
-                      src="/images/google-cybersecurity.png"
+                      src={`${baseUrl}images/google-cybersecurity.png`}
                       alt="Google Cybersecurity"
                       style={{ width: "60px", height: "auto", marginBottom: "10px" }}
                     />
@@ -157,7 +158,7 @@ export default function Education() {
                 >
                   <div className="resume-wrap ftco-animate text-center">
                     <img
-                      src="/images/google-it.png"
+                      src={`${baseUrl}images/google-it.png`}
                       alt="Google IT Support"
                       style={{ width: "60px", height: "auto", marginBottom: "10px" }}
                     />
@@ -175,7 +176,7 @@ export default function Education() {
                 >
                   <div className="resume-wrap ftco-animate text-center">
                     <img
-                      src="/images/python.png"
+                      src={`${baseUrl}images/python.png`}
                       alt="Google Python"
                       style={{ width: "60px", height: "auto", marginBottom: "10px" }}
                     />
