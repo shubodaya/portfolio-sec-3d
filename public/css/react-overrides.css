@@ -27,6 +27,34 @@
   background-color: #ffbd39;
 }
 
+.about-info {
+  padding-left: 0;
+  list-style: none;
+  margin-left: 0;
+}
+
+.about-info li {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  list-style: none;
+}
+
+.about-info li strong {
+  flex: 0 0 240px;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .about-info li {
+    grid-template-columns: 1fr;
+  }
+
+  .about-info li strong {
+    margin-bottom: 4px;
+  }
+}
+
 /* Animation styles */
 #typing-animation {
   position: relative;
@@ -188,6 +216,21 @@ div {
   overflow: visible;
 }
 
+#gaming-model-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#gaming-model-container canvas {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* Prevent nested scrollbars inside the app */
 #root {
   overflow: visible;
@@ -221,6 +264,7 @@ div {
   height: auto;
   min-height: 100vh;
   padding-bottom: 0;
+  position: relative;
 }
 
 /* Contact cards on a single row */
@@ -320,6 +364,7 @@ div {
   box-shadow:
     0 0 6px rgba(120, 200, 255, 0.25),
     0 0 12px rgba(120, 200, 255, 0.15);
+  z-index: 0;
 }
 
 .starry-background .shooting-star {
@@ -330,6 +375,17 @@ div {
   box-shadow: 0 0 6px rgba(120, 200, 255, 0.7);
   transform-origin: 0 50%;
   animation: shooting 1.2s ease-out forwards;
+  z-index: 0;
+}
+
+#gaming-model-container {
+  position: relative;
+  z-index: 2;
+}
+
+#gaming-model-container canvas {
+  position: relative;
+  z-index: 2;
 }
 
 @keyframes shooting {

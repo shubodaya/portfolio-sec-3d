@@ -33,7 +33,7 @@ function setup3DModel(
   controls.enablePan = false;
   controls.minDistance = distanceRange[0];
   controls.maxDistance = distanceRange[1];
-  controls.minPolarAngle = Math.PI / 2 - 0.1; // 90 degrees — lock to horizontal orbit
+  controls.minPolarAngle = Math.PI / 2 - 0.1; // 90 degrees lock to horizontal orbit
   controls.maxPolarAngle = Math.PI / 2 + 0.1;
   controls.autoRotate = autoRotate;
   controls.target = new THREE.Vector3(0, 1, 0);
@@ -48,12 +48,12 @@ function setup3DModel(
   scene.add(pointLight);
 
   const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
-directionalLight.position.set(50, 100, 100);
-scene.add(directionalLight);
+  directionalLight.position.set(50, 100, 100);
+  scene.add(directionalLight);
 
-const spotLight = new THREE.SpotLight(0xffffff, 2);
-spotLight.position.set(100, 200, 100);
-scene.add(spotLight);
+  const spotLight = new THREE.SpotLight(0xffffff, 2);
+  spotLight.position.set(100, 200, 100);
+  scene.add(spotLight);
 
   const loader = new GLTFLoader().setPath(modelPath);
   loader.load(
@@ -69,6 +69,12 @@ scene.add(spotLight);
           child.receiveShadow = true;
         }
       });
+
+      const bounds = new THREE.Box3().setFromObject(mesh);
+      const center = bounds.getCenter(new THREE.Vector3());
+      mesh.position.sub(center);
+      controls.target.set(0, 0, 0);
+      controls.update();
 
       scene.add(mesh);
 
@@ -119,14 +125,14 @@ function initModels() {
       'gaming-model-container',
       'threeD/gaming_setup/',
       'scene.gltf',
-      [0, -50, 0],          // Position
-      [15, 15, 15],          // Scale (reduced from 15 to 8)
-      [10, 5, -10],       // Light position
+      [0, -50, 0], // Position
+      [15, 15, 15], // Scale
+      [10, 5, -10], // Light position
       'progress-container-gaming',
-      [200, 200, 0],    // Camera position (closer for better framing)
-      [window.innerWidth * 0.9, window.innerHeight * 0.9],         // Renderer size (smaller canvas)
-      [100, 200],          // Distance range
-      false               // Auto-rotate off
+      [200, 200, 0], // Camera position
+      [window.innerWidth * 0.9, window.innerHeight * 0.9], // Renderer size
+      [100, 200], // Distance range
+      false // Auto-rotate off
     );
   }
 
@@ -134,18 +140,17 @@ function initModels() {
   if (earthContainer && earthContainer.dataset.modelReady !== '1') {
     earthContainer.dataset.modelReady = '1';
     setup3DModel(
-        'model3-container', // Container ID
-        'threeD/earth_orbit/', // Path to model files
-        'scene.gltf', // Model file
-        [0, 0, 0], // Position (x, y, z)
-        [700, 700, 700], // Scale (x, y, z)
-        [10, 5, 10], // Light position (x, y, z)
-        'progress3-container', // ID of the progress container
-        [900, 500, 500], // Camera position (x, y, z)
-        [window.innerWidth*0.5, window.innerHeight*0.9], // Renderer size
-        [100, 900], // Distance range (minDistance, maxDistance)
-        true, // Enable auto-rotate
-        false
+      'model3-container', // Container ID
+      'threeD/earth_orbit/', // Path to model files
+      'scene.gltf', // Model file
+      [0, 0, 0], // Position (x, y, z)
+      [700, 700, 700], // Scale (x, y, z)
+      [10, 5, 10], // Light position (x, y, z)
+      'progress3-container', // ID of the progress container
+      [900, 500, 500], // Camera position (x, y, z)
+      [window.innerWidth * 0.5, window.innerHeight * 0.9], // Renderer size
+      [100, 900], // Distance range (minDistance, maxDistance)
+      true // Enable auto-rotate
     );
   }
 }

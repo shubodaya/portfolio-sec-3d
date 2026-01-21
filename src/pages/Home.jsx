@@ -1,8 +1,9 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function Home() {
   const baseUrl = import.meta.env.BASE_URL;
+  const [showScrollTop, setShowScrollTop] = useState(false);
   useEffect(() => {
     const element = document.getElementById("typing-animation");
     if (!element) {
@@ -39,8 +40,45 @@ export default function Home() {
     };
   }, []);
 
+  useEffect(() => {
+    const onScroll = () => {
+      setShowScrollTop(window.scrollY > 280);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <>
+      <button
+        type="button"
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        aria-label="Scroll to top"
+        style={{
+          position: "fixed",
+          right: "24px",
+          bottom: "24px",
+          width: "46px",
+          height: "46px",
+          borderRadius: "50%",
+          border: "none",
+          background: "transparent",
+          border: "2px solid rgba(64, 170, 255, 1)",
+          color: "rgba(64, 170, 255, 1)",
+          fontSize: "20px",
+          fontWeight: 600,
+          cursor: "pointer",
+          opacity: showScrollTop ? 1 : 0,
+          pointerEvents: showScrollTop ? "auto" : "none",
+          transform: showScrollTop ? "translateY(0)" : "translateY(8px)",
+          transition: "opacity 0.2s ease, transform 0.2s ease",
+          boxShadow: "0 0 8px rgba(64, 170, 255, 0.35), 0 0 16px rgba(64, 170, 255, 0.2)",
+          zIndex: 60,
+        }}
+      >
+        ↑
+      </button>
       <div
         className="ftco-section ftco-hireme img margin-top"
         style={{
@@ -105,9 +143,7 @@ export default function Home() {
         </section>
       </div>
 
-      <div className="binary-bg-container" style={{ position: "relative" }}>
-        <canvas id="binary-resume-canvas"></canvas>
-
+      <div className="binary-bg-container starry-background" style={{ position: "relative" }}>
         <section className="ftco-section ftco-no-pb" id="quick-links-section">
           <div className="container">
             <div className="row justify-content-center pb-5">
@@ -176,43 +212,45 @@ export default function Home() {
       <br />
       <br />
 
-      <section className="ftco-section ftco-no-pb" id="resume-section">
-        <div className="container">
-          <div
-            className="ftco-section ftco-hireme img margin-top"
-            style={{ backgroundImage: `url('${baseUrl}images/second.png')` }}
-          ></div>
-          <div className="row justify-content-center pb-5">
-            <div className="col-md-10 heading-section text-center ftco-animate">
-              <h1 className="big big-2">Resume</h1>
-              <h2 className="mb-4">Resume</h2>
-              <br />
-              <br />
-              <p>
-                Technical Support Engineer with 2 years of experience in
-                firewall technology. Expert in regulatory compliance, technical
-                troubleshooting, and customer service. Skilled in problem
-                solving, attention to detail, and teamwork. Passionate about
-                privacy protection, ethical responsibility, and security.
-                Dedicated to solving complex problems and making a difference in
-                the cybersecurity landscape.
-              </p>
+      <div className="starry-background">
+        <section className="ftco-section ftco-no-pb" id="resume-section">
+          <div className="container">
+            <div
+              className="ftco-section ftco-hireme img margin-top"
+              style={{ backgroundImage: `url('${baseUrl}images/second.png')` }}
+            ></div>
+            <div className="row justify-content-center pb-5">
+              <div className="col-md-10 heading-section text-center ftco-animate">
+                <h1 className="big big-2">Resume</h1>
+                <h2 className="mb-4">Resume</h2>
+                <br />
+                <br />
+                <p>
+                  Technical Support Engineer with 2 years of experience in
+                  firewall technology. Expert in regulatory compliance, technical
+                  troubleshooting, and customer service. Skilled in problem
+                  solving, attention to detail, and teamwork. Passionate about
+                  privacy protection, ethical responsibility, and security.
+                  Dedicated to solving complex problems and making a difference in
+                  the cybersecurity landscape.
+                </p>
+              </div>
+            </div>
+            <div className="counter-wrap ftco-animate d-flex mt-md-3 justify-content-center">
+              <div className="text">
+                <p>
+                  <a
+                    href="https://docs.google.com/document/d/1eO-7W3Sl7e0KSYvtoZzb8vfDJgP5zD4JU41VVvzUFfM/edit?usp=sharing"
+                    className="btn btn-success py-3 px-4"
+                  >
+                    Download Resume
+                  </a>
+                </p>
+              </div>
             </div>
           </div>
-          <div className="counter-wrap ftco-animate d-flex mt-md-3 justify-content-center">
-            <div className="text">
-              <p>
-                <a
-                  href="https://docs.google.com/document/d/1eO-7W3Sl7e0KSYvtoZzb8vfDJgP5zD4JU41VVvzUFfM/edit?usp=sharing"
-                  className="btn btn-success py-3 px-4"
-                >
-                  Download Resume
-                </a>
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+        </section>
+      </div>
 
       <br />
       <br />

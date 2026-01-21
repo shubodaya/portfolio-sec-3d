@@ -4,92 +4,6 @@
  });
 
 
-// Subtle binary rain background for Resume section only
-function createBinaryRainForResume() {
-  const container = document.querySelector('.binary-bg-container');
-  const canvas = document.getElementById('binary-resume-canvas');
-  if (!container || !canvas) {
-    return;
-  }
-  if (canvas.dataset.binaryRain === '1') {
-    return;
-  }
-  const ctx = canvas.getContext('2d');
-  if (!ctx) {
-    return;
-  }
-  canvas.dataset.binaryRain = '1';
-
-  canvas.width = container.clientWidth;
-  canvas.height = container.clientHeight;
-  canvas.style.position = 'absolute';
-  canvas.style.top = 0;
-  canvas.style.left = 0;
-  canvas.style.zIndex = 0;
-
-  const baseFont = 22;
-  const columnWidth = 28;
-  const columns = Math.floor(canvas.width / columnWidth);
-  const drops = Array(columns).fill(0);
-  const speeds = Array(columns)
-    .fill(0)
-    .map(() => 0.25 + Math.random() * 0.7);
-  const sizes = Array(columns)
-    .fill(0)
-    .map(() => baseFont * (0.65 + Math.random() * 1.25));
-  const glowColor = '0, 165, 255';
-
-  function draw() {
-    ctx.fillStyle = 'rgba(0, 0, 0, 0.18)';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'top';
-
-    for (let i = 0; i < drops.length; i++) {
-      const size = sizes[i];
-      const x = i * columnWidth + columnWidth * 0.5;
-      const y = drops[i] * size;
-      const text = Math.random() > 0.55 ? '0' : '1';
-
-      ctx.font = `${size}px monospace`;
-      ctx.fillStyle = `rgba(${glowColor}, 0.75)`;
-      ctx.fillText(text, x, y);
-
-      const trailY = y - size * 1.6;
-      if (trailY > 0 && Math.random() > 0.35) {
-        ctx.fillStyle = `rgba(${glowColor}, 0.2)`;
-        ctx.fillText(Math.random() > 0.55 ? '0' : '1', x, trailY);
-      }
-
-      drops[i] += speeds[i];
-
-      if (y > canvas.height + size * 2) {
-        drops[i] = Math.random() * -20;
-        speeds[i] = 0.25 + Math.random() * 0.7;
-        sizes[i] = baseFont * (0.65 + Math.random() * 1.25);
-      }
-    }
-
-    requestAnimationFrame(draw);
-  }
-
-  draw();
-
-  window.addEventListener('resize', () => {
-    canvas.width = container.clientWidth;
-    canvas.height = container.clientHeight;
-  });
-}
-
-function initBinaryRain() {
-  createBinaryRainForResume();
-}
-
-document.addEventListener('DOMContentLoaded', initBinaryRain);
-
-
-
 (function($) {
 
 	"use strict";
@@ -311,13 +225,8 @@ document.addEventListener('DOMContentLoaded', initBinaryRain);
 						}, k * 50, 'easeInOutExpo');
 					});
 				}, 100);
-			} else {
-				// Reset the animation classes if the element goes out of view
-				$(this.element).removeClass('fadeIn ftco-animated fadeInLeft fadeInRight fadeInUp');
-				$(this.element).addClass('ftco-animate'); // Reset to original state for re-triggering
 			}
-	
-		}, { offset: '95%' });
+		}, { offset: '95%', triggerOnce: true });
 	};
 	contentWayPoint();
 
@@ -557,7 +466,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function initRouteEffects() {
-  initBinaryRain();
   initStars();
   initHeroImageObserver();
   projectTileMovement();

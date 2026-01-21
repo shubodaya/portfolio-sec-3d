@@ -2,7 +2,7 @@ export default function About() {
   return (
     <div className="starry-background">
       <section className="ftco-section ftco-no-pb" id="about-section">
-        <div className="container">
+        <div className="container-fluid px-4 px-lg-5">
         <div className="row justify-content-center pb-5">
           <div className="col-md-10 heading-section text-center ftco-animate">
             <h1 className="big big-2">About</h1>
@@ -13,7 +13,7 @@ export default function About() {
         </div>
 
         <div className="row justify-content-center">
-          <div className="col-md-10">
+          <div className="col-12 col-lg-11 col-xl-10">
             <div className="row align-items-start">
               <div className="col-md-5 mb-5">
                 <div className="p-3 bg-dark text-white rounded shadow">
@@ -100,41 +100,24 @@ export default function About() {
               <div className="col-md-7">
                 <div className="p-3 text-white rounded">
                   <p style={{ textAlign: "justify" }}>
-                    Hi, Iƒ?Tm Shubodaya ƒ?" a tech-driven problem solver with a
-                    strong passion for networks and security. I thrive in
-                    environments where infrastructure, performance, and
-                    protection come together to create reliable, resilient
-                    systems. With hands-on experience in configuring firewalls,
-                    setting up secure VPNs, monitoring systems, and responding
-                    to real-time threats, I enjoy diving deep into how things
-                    connect and, more importantly, how to keep them safe.
+                    Hi, I'm Shubodaya - a network security engineer who builds
+                    reliable, resilient systems. I focus on firewall tuning,
+                    secure VPNs, monitoring, and incident response, with a
+                    hands-on approach to hardening infrastructure.
                   </p>
 
                   <p style={{ textAlign: "justify" }}>
-                    My background spans both enterprise and cloud-based
-                    environments, where Iƒ?Tve worked with tools like SonicWall,
-                    Splunk, Wireshark, and Microsoft Defender. I hold an MSc in
-                    Cybersecurity (Distinction, NCSC-certified) from Swansea
-                    University, where I focused on secure architectures,
-                    intrusion detection, and vulnerability management. Before
-                    that, I earned my engineering degree in Electronics and
-                    Communication, which gave me a solid technical foundation.
-                  </p>
-
-                  <p style={{ textAlign: "justify" }}>
-                    Whether itƒ?Ts building secure infrastructure, automating
-                    processes, or investigating unusual network activity, I
-                    bring curiosity, precision, and a drive to solve complex
-                    challenges. I also value documentation, collaboration, and
-                    continuous learning ƒ?" because in cybersecurity, staying
-                    still isnƒ?Tt an option.
+                    I hold an MSc in Cybersecurity (Distinction, NCSC-certified)
+                    from Swansea University and an engineering degree in
+                    Electronics and Communication. I work across enterprise and
+                    cloud environments using tools like SonicWall, Splunk,
+                    Wireshark, and Microsoft Defender.
                   </p>
 
                   <p style={{ textAlign: "justify" }}>
                     Outside of work, I enjoy web design, sports, photography,
-                    and the occasional jam session with my guitar. Iƒ?Tm always
-                    eager to take on new challenges and grow in the
-                    ever-evolving world of cybersecurity.
+                    and music. I'm always looking for new challenges and ways
+                    to grow in cybersecurity.
                   </p>
 
                   <ul className="about-info mt-4 px-md-0 px-2">
