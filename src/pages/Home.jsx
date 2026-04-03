@@ -1,16 +1,19 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { resolveAssetUrl } from "../siteContent";
 
-export default function Home() {
-  const baseUrl = import.meta.env.BASE_URL;
+export default function Home({ siteContent }) {
+  const home = siteContent.home;
+  const contact = home.contactSection;
   const [showScrollTop, setShowScrollTop] = useState(false);
+
   useEffect(() => {
     const element = document.getElementById("typing-animation");
     if (!element) {
       return;
     }
 
-    const text = "Network Security Engineer     ";
+    const text = `${home.typingText || ""}     `;
     let index = 0;
     let timeoutId;
     let cancelled = false;
@@ -38,7 +41,7 @@ export default function Home() {
       cancelled = true;
       clearTimeout(timeoutId);
     };
-  }, []);
+  }, [home.typingText]);
 
   useEffect(() => {
     const onScroll = () => {
@@ -48,6 +51,11 @@ export default function Home() {
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const heroBackground = resolveAssetUrl(home.heroBackgroundImage);
+  const heroPortrait = resolveAssetUrl(home.heroPortraitImage);
+  const resumeBackground = resolveAssetUrl(home.resumeSection.backgroundImage);
+  const githubBackground = resolveAssetUrl(home.githubSection.backgroundImage);
 
   return (
     <>
@@ -62,7 +70,6 @@ export default function Home() {
           width: "46px",
           height: "46px",
           borderRadius: "50%",
-          border: "none",
           background: "transparent",
           border: "2px solid rgba(64, 170, 255, 1)",
           color: "rgba(64, 170, 255, 1)",
@@ -73,21 +80,22 @@ export default function Home() {
           pointerEvents: showScrollTop ? "auto" : "none",
           transform: showScrollTop ? "translateY(0)" : "translateY(8px)",
           transition: "opacity 0.2s ease, transform 0.2s ease",
-          boxShadow: "0 0 8px rgba(64, 170, 255, 0.35), 0 0 16px rgba(64, 170, 255, 0.2)",
-          zIndex: 60,
+          boxShadow:
+            "0 0 8px rgba(64, 170, 255, 0.35), 0 0 16px rgba(64, 170, 255, 0.2)",
+          zIndex: 60
         }}
       >
-        ↑
+        {"\u2191"}
       </button>
       <div
         className="ftco-section ftco-hireme img margin-top"
         style={{
-          background: `linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 10%), url('${baseUrl}images/bg_0.png')`,
+          background: `linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 10%), url('${heroBackground}')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundAttachment: "fixed",
           position: "relative",
-          zIndex: 0,
+          zIndex: 0
         }}
       >
         <section
@@ -99,30 +107,30 @@ export default function Home() {
             <div className="row d-flex align-items-center">
               <div className="col-md-6 d-flex flex-column justify-content-center">
                 <span className="subheading" style={{ fontWeight: "bold" }}>
-                  Hello!
+                  {home.greeting}
                 </span>
                 <h1 className="mb-4 mt-3">
-                  I&apos;m <span>Shubodaya</span>
+                  {home.headlinePrefix} <span>{home.headlineName}</span>
                 </h1>
 
                 <span id="typing-animation"></span>
 
                 <div className="mt-4">
                   <a
-                    href="https://docs.google.com/document/d/1eO-7W3Sl7e0KSYvtoZzb8vfDJgP5zD4JU41VVvzUFfM/edit?usp=sharing"
+                    href={home.primaryButtonUrl}
                     className="btn btn-success py-3 px-4 mr-3"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Resume
+                    {home.primaryButtonLabel}
                   </a>
                   <a
-                    href="https://www.linkedin.com/in/shubodaya/"
+                    href={home.secondaryButtonUrl}
                     className="btn btn-dark py-3 px-4"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    My Linkedin
+                    {home.secondaryButtonLabel}
                   </a>
                 </div>
               </div>
@@ -131,11 +139,11 @@ export default function Home() {
                 id="bg-img-col"
                 className="col-md-6 scroll-animate"
                 style={{
-                  backgroundImage: `url('${baseUrl}images/first.png')`,
+                  backgroundImage: `url('${heroPortrait}')`,
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                   minHeight: "500px",
-                  pointerEvents: "none",
+                  pointerEvents: "none"
                 }}
               ></div>
             </div>
@@ -149,50 +157,28 @@ export default function Home() {
             <div className="row justify-content-center pb-5">
               <div className="col-md-10 heading-section text-center ftco-animate">
                 <h1 className="big big-2">Navigate</h1>
-                <h2 className="mb-4">Explore Sections</h2>
+                <h2 className="mb-4">{home.quickLinksHeading}</h2>
                 <br />
               </div>
             </div>
 
             <div className="row">
-              <div className="col-md-6 col-lg-3 project-tile">
-                <Link to="/about" className="text-decoration-none">
-                  <div className="resume-wrap ftco-animate text-center">
-                    <h4>About Me</h4>
-                  </div>
-                </Link>
-              </div>
-
-              <div className="col-md-6 col-lg-3 project-tile">
-                <Link to="/experience" className="text-decoration-none">
-                  <div className="resume-wrap ftco-animate text-center">
-                    <h4>Experience</h4>
-                  </div>
-                </Link>
-              </div>
-
-              <div className="col-md-6 col-lg-3 project-tile">
-                <Link to="/projects" className="text-decoration-none">
-                  <div className="resume-wrap ftco-animate text-center">
-                    <h4>Projects</h4>
-                  </div>
-                </Link>
-              </div>
-
-              <div className="col-md-6 col-lg-3 project-tile">
-                <Link to="/education" className="text-decoration-none">
-                  <div className="resume-wrap ftco-animate text-center">
-                    <h4>Education</h4>
-                  </div>
-                </Link>
-              </div>
+              {home.quickLinks.map((item) => (
+                <div className="col-md-6 col-lg-3 project-tile" key={item.to || item.label}>
+                  <Link to={item.to} className="text-decoration-none">
+                    <div className="resume-wrap ftco-animate text-center">
+                      <h4>{item.label}</h4>
+                    </div>
+                  </Link>
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
         <section>
           <div id="gaming-interaction-hint">
-            <span>Click and drag to interact</span>
+            <span>{home.gamingHintText}</span>
             <div className="arrow">{"\u2193"}</div>
           </div>
           <div
@@ -217,33 +203,27 @@ export default function Home() {
           <div className="container">
             <div
               className="ftco-section ftco-hireme img margin-top"
-              style={{ backgroundImage: `url('${baseUrl}images/second.png')` }}
+              style={{ backgroundImage: `url('${resumeBackground}')` }}
             ></div>
             <div className="row justify-content-center pb-5">
               <div className="col-md-10 heading-section text-center ftco-animate">
-                <h1 className="big big-2">Resume</h1>
-                <h2 className="mb-4">Resume</h2>
+                <h1 className="big big-2">{home.resumeSection.heading}</h1>
+                <h2 className="mb-4">{home.resumeSection.heading}</h2>
                 <br />
                 <br />
-                <p>
-                  Technical Support Engineer with 2 years of experience in
-                  firewall technology. Expert in regulatory compliance, technical
-                  troubleshooting, and customer service. Skilled in problem
-                  solving, attention to detail, and teamwork. Passionate about
-                  privacy protection, ethical responsibility, and security.
-                  Dedicated to solving complex problems and making a difference in
-                  the cybersecurity landscape.
-                </p>
+                <p>{home.resumeSection.body}</p>
               </div>
             </div>
             <div className="counter-wrap ftco-animate d-flex mt-md-3 justify-content-center">
               <div className="text">
                 <p>
                   <a
-                    href="https://docs.google.com/document/d/1eO-7W3Sl7e0KSYvtoZzb8vfDJgP5zD4JU41VVvzUFfM/edit?usp=sharing"
+                    href={home.resumeSection.buttonUrl}
                     className="btn btn-success py-3 px-4"
+                    target="_blank"
+                    rel="noreferrer"
                   >
-                    Download Resume
+                    {home.resumeSection.buttonLabel}
                   </a>
                 </p>
               </div>
@@ -292,31 +272,31 @@ export default function Home() {
         <div
           className="ftco-section ftco-hireme img margin-top"
           style={{
-            backgroundImage: `url('${baseUrl}images/bg_1.jpg')`,
+            backgroundImage: `url('${githubBackground}')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundAttachment: "fixed",
             position: "relative",
-            zIndex: 10,
+            zIndex: 10
           }}
         >
           <div className="row justify-content-center">
             <div className="col-md-7 ftco-animate text-center">
               <h2>
-                Here&apos;s my{" "}
+                {home.githubSection.headingPrefix}{" "}
                 <span>
                   <a
-                    href="https://github.com/shubodaya"
+                    href={home.githubSection.buttonUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn btn-white py-3 px-4"
                   >
-                    GitHub
+                    {home.githubSection.buttonLabel}
                   </a>
                 </span>
               </h2>
               <div className="heading">
-                <h4>Explore my Projects.</h4>
+                <h4>{home.githubSection.body}</h4>
                 <br />
               </div>
             </div>
@@ -334,61 +314,43 @@ export default function Home() {
           id="contact-section"
         >
           <div className="container">
-          <div className="row justify-content-center mb-5 pb-3">
-            <div className="col-md-7 heading-section text-center ftco-animate">
-              <h1 className="big big-2">Contact</h1>
-                <h2 className="mb-4">Contact Me</h2>
-              <br />
-              <br />
-                <p>Let&apos;s connect. Here&apos;s the quickest way to reach me.</p>
+            <div className="row justify-content-center mb-5 pb-3">
+              <div className="col-md-7 heading-section text-center ftco-animate">
+                <h1 className="big big-2">Contact</h1>
+                <h2 className="mb-4">{contact.heading}</h2>
+                <br />
+                <br />
+                <p>{contact.note}</p>
+              </div>
             </div>
-          </div>
 
-          <div className="row d-flex contact-info mb-5">
-            <div className="col-md-6 col-lg-3 d-flex ftco-animate">
-              <div className="align-self-stretch box p-4 text-center">
-                <div className="icon d-flex align-items-center justify-content-center">
-                  <span className="icon-map-signs"></span>
-                </div>
-                <h3 className="mb-4">Location</h3>
-                <div className="contact-pill">Swansea, Wales, UK</div>
-              </div>
-            </div>
-            <div className="col-md-6 col-lg-3 d-flex ftco-animate">
-              <div className="align-self-stretch box p-4 text-center">
-                <div className="icon d-flex align-items-center justify-content-center">
-                  <span className="icon-phone2"></span>
-                </div>
-                <h3 className="mb-4">Phone</h3>
-                <div className="contact-pill">+44 7436301739</div>
-              </div>
-            </div>
-            <div className="col-md-6 col-lg-3 d-flex ftco-animate">
-              <div className="align-self-stretch box p-4 text-center">
-                <div className="icon d-flex align-items-center justify-content-center">
-                  <span className="icon-paper-plane"></span>
-                </div>
-                <h3 className="mb-4">Email</h3>
-                <div className="contact-pill">hnshubodaya@gmail.com</div>
-              </div>
-            </div>
-            <div className="col-md-6 col-lg-3 d-flex ftco-animate">
-              <div className="align-self-stretch box p-4 text-center">
-                <div className="icon d-flex align-items-center justify-content-center globe-3d">
-                  <span className="icon-globe"></span>
-                </div>
-                <h3 className="mb-4">Resume</h3>
-                <a
-                  className="contact-pill"
-                  href="https://docs.google.com/document/d/1eO-7W3Sl7e0KSYvtoZzb8vfDJgP5zD4JU41VVvzUFfM/edit?usp=sharing"
-                  target="_blank"
-                  rel="noopener noreferrer"
+            <div className="row d-flex contact-info mb-5">
+              {contact.cards.map((card) => (
+                <div
+                  className="col-md-6 col-lg-3 d-flex ftco-animate"
+                  key={`${card.title}-${card.value}`}
                 >
-                  View resume
-                </a>
-              </div>
+                  <div className="align-self-stretch box p-4 text-center">
+                    <div className="icon d-flex align-items-center justify-content-center">
+                      <span className={card.iconClass}></span>
+                    </div>
+                    <h3 className="mb-4">{card.title}</h3>
+                    {card.type === "link" ? (
+                      <a
+                        className="contact-pill"
+                        href={card.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {card.value}
+                      </a>
+                    ) : (
+                      <div className="contact-pill">{card.value}</div>
+                    )}
+                  </div>
+                </div>
+              ))}
             </div>
-          </div>
           </div>
         </section>
 
@@ -399,18 +361,13 @@ export default function Home() {
           <div className="container">
             <div className="row align-items-start">
               <div className="col-12 col-lg-6 ftco-animate order-lg-1">
-                <h2 style={{ textAlign: "center" }}>
-                  Have a <span>Question?</span>
-                </h2>
+                <h2 style={{ textAlign: "center" }}>{contact.formHeading}</h2>
                 <div className="que" id="send-message">
-                  <form
-                    action="https://api.web3forms.com/submit"
-                    method="POST"
-                  >
+                  <form action="https://api.web3forms.com/submit" method="POST">
                     <input
                       type="hidden"
                       name="access_key"
-                      value="6949e0cb-d280-4f91-94aa-f80685b608a9"
+                      value={contact.web3formsAccessKey}
                     />
                     <div className="row gy-4 gy-xl-5 p-4 p-xl-5">
                       <div className="col-12">
@@ -507,7 +464,7 @@ export default function Home() {
                             className="btn btn-success py-3 px-5"
                             type="submit"
                           >
-                            Send Message
+                            {contact.formSubmitLabel}
                           </button>
                         </div>
                       </div>
@@ -515,22 +472,14 @@ export default function Home() {
                   </form>
                 </div>
                 <ul className="ftco-footer-social list-unstyled d-flex justify-content-center align-items-center mt-4">
-                  <li className="ftco-animate normal-txt">Find me on</li>
-                  <li className="ftco-animate">
-                    <a href="https://www.linkedin.com/in/shubodaya/">
-                      <span className="icon-linkedin"></span>
-                    </a>
-                  </li>
-                  <li className="ftco-animate">
-                    <a href="https://twitter.com/chubbihn">
-                      <span className="icon-twitter"></span>
-                    </a>
-                  </li>
-                  <li className="ftco-animate">
-                    <a href="https://www.instagram.com/shutter.__.speed/">
-                      <span className="icon-instagram"></span>
-                    </a>
-                  </li>
+                  <li className="ftco-animate normal-txt">{contact.socialIntro}</li>
+                  {contact.socialLinks.map((item) => (
+                    <li className="ftco-animate" key={item.label}>
+                      <a href={item.href} target="_blank" rel="noreferrer">
+                        <span className={item.iconClass}></span>
+                      </a>
+                    </li>
+                  ))}
                 </ul>
               </div>
 
@@ -542,7 +491,7 @@ export default function Home() {
                     height: "520px",
                     display: "flex",
                     alignItems: "center",
-                    justifyContent: "center",
+                    justifyContent: "center"
                   }}
                 >
                   <div id="progress3-container" style={{ display: "none" }}>

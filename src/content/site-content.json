@@ -1,0 +1,364 @@
+{
+  "meta": {
+    "siteTitle": "Shubodaya's Portfolio",
+    "ownerName": "Shubodaya H N",
+    "brandIconPath": "favicon_io/favicon-32x32.png",
+    "githubPages": {
+      "owner": "shubodaya",
+      "repo": "portfolio-sec-3d",
+      "branch": "main",
+      "contentPath": "src/content/site-content.json"
+    }
+  },
+  "home": {
+    "greeting": "Hello!",
+    "headlinePrefix": "I'm",
+    "headlineName": "Shubodaya",
+    "typingText": "Network Security Engineer",
+    "heroBackgroundImage": "images/bg_0.png",
+    "heroPortraitImage": "images/first.png",
+    "primaryButtonLabel": "Resume",
+    "primaryButtonUrl": "https://docs.google.com/document/d/1eO-7W3Sl7e0KSYvtoZzb8vfDJgP5zD4JU41VVvzUFfM/edit?usp=sharing",
+    "secondaryButtonLabel": "My Linkedin",
+    "secondaryButtonUrl": "https://www.linkedin.com/in/shubodaya/",
+    "quickLinksHeading": "Explore Sections",
+    "quickLinks": [
+      {
+        "label": "About Me",
+        "to": "/about"
+      },
+      {
+        "label": "Experience",
+        "to": "/experience"
+      },
+      {
+        "label": "Projects",
+        "to": "/projects"
+      },
+      {
+        "label": "Education",
+        "to": "/education"
+      }
+    ],
+    "gamingHintText": "Click and drag to interact",
+    "resumeSection": {
+      "heading": "Resume",
+      "body": "Technical Support Engineer with 2 years of experience in firewall technology. Expert in regulatory compliance, technical troubleshooting, and customer service. Skilled in problem solving, attention to detail, and teamwork. Passionate about privacy protection, ethical responsibility, and security. Dedicated to solving complex problems and making a difference in the cybersecurity landscape.",
+      "backgroundImage": "images/second.png",
+      "buttonLabel": "Download Resume",
+      "buttonUrl": "https://docs.google.com/document/d/1eO-7W3Sl7e0KSYvtoZzb8vfDJgP5zD4JU41VVvzUFfM/edit?usp=sharing"
+    },
+    "githubSection": {
+      "headingPrefix": "Here's my",
+      "buttonLabel": "GitHub",
+      "buttonUrl": "https://github.com/shubodaya",
+      "body": "Explore my Projects.",
+      "backgroundImage": "images/bg_1.jpg"
+    },
+    "contactSection": {
+      "heading": "Contact Me",
+      "note": "Let's connect. Here's the quickest way to reach me.",
+      "cards": [
+        {
+          "title": "Location",
+          "iconClass": "icon-map-signs",
+          "value": "Swansea, Wales, UK",
+          "type": "text",
+          "href": ""
+        },
+        {
+          "title": "Phone",
+          "iconClass": "icon-phone2",
+          "value": "+44 7436301739",
+          "type": "text",
+          "href": ""
+        },
+        {
+          "title": "Email",
+          "iconClass": "icon-paper-plane",
+          "value": "hnshubodaya@gmail.com",
+          "type": "text",
+          "href": ""
+        },
+        {
+          "title": "Resume",
+          "iconClass": "icon-globe",
+          "value": "View resume",
+          "type": "link",
+          "href": "https://docs.google.com/document/d/1eO-7W3Sl7e0KSYvtoZzb8vfDJgP5zD4JU41VVvzUFfM/edit?usp=sharing"
+        }
+      ],
+      "formHeading": "Have a Question?",
+      "formSubmitLabel": "Send Message",
+      "web3formsAccessKey": "6949e0cb-d280-4f91-94aa-f80685b608a9",
+      "socialIntro": "Find me on",
+      "socialLinks": [
+        {
+          "label": "LinkedIn",
+          "iconClass": "icon-linkedin",
+          "href": "https://www.linkedin.com/in/shubodaya/"
+        },
+        {
+          "label": "Twitter",
+          "iconClass": "icon-twitter",
+          "href": "https://twitter.com/chubbihn"
+        },
+        {
+          "label": "Instagram",
+          "iconClass": "icon-instagram",
+          "href": "https://www.instagram.com/shutter.__.speed/"
+        }
+      ]
+    }
+  },
+  "about": {
+    "heading": "About Me",
+    "skillsHeading": "Skills",
+    "skills": [
+      {
+        "label": "Firewall Management",
+        "percent": 97
+      },
+      {
+        "label": "Wireshark and TCP Dump",
+        "percent": 95
+      },
+      {
+        "label": "SIEM Tools",
+        "percent": 92
+      },
+      {
+        "label": "Cloud Computing",
+        "percent": 90
+      },
+      {
+        "label": "Communication Skills",
+        "percent": 95
+      },
+      {
+        "label": "Troubleshooting",
+        "percent": 89
+      },
+      {
+        "label": "Web Development",
+        "percent": 88
+      },
+      {
+        "label": "Linux",
+        "percent": 88
+      },
+      {
+        "label": "SQL",
+        "percent": 87
+      },
+      {
+        "label": "Python",
+        "percent": 86
+      },
+      {
+        "label": "Java",
+        "percent": 79
+      },
+      {
+        "label": "Graphic Designing",
+        "percent": 76
+      },
+      {
+        "label": "Photography, Videography and Editing",
+        "percent": 80
+      },
+      {
+        "label": "Painting",
+        "percent": 75
+      },
+      {
+        "label": "Audio Editing and Mixing",
+        "percent": 74
+      }
+    ],
+    "paragraphs": [
+      "Hi, I'm Shubodaya - a network security engineer who builds reliable, resilient systems. I focus on firewall tuning, secure VPNs, monitoring, and incident response, with a hands-on approach to hardening infrastructure.",
+      "I hold an MSc in Cybersecurity (Distinction, NCSC-certified) from Swansea University and an engineering degree in Electronics and Communication. I work across enterprise and cloud environments using tools like SonicWall, Splunk, Wireshark, and Microsoft Defender.",
+      "Outside of work, I enjoy web design, sports, photography, and music. I'm always looking for new challenges and ways to grow in cybersecurity."
+    ],
+    "info": [
+      {
+        "label": "Profile",
+        "value": "Network Security Engineer"
+      },
+      {
+        "label": "Domain",
+        "value": "Computer Science"
+      },
+      {
+        "label": "Education",
+        "value": "Masters in Cybersecurity (Distinction, Swansea University)"
+      },
+      {
+        "label": "Languages",
+        "value": "English, Hindi, Kannada"
+      },
+      {
+        "label": "Technical Skills",
+        "value": "Firewall Management, SIEM Tools, Cloud Computing, Linux, Python, Networking"
+      },
+      {
+        "label": "Soft Skills",
+        "value": "Communication, Time Management, Adaptability, Team Collaboration"
+      },
+      {
+        "label": "Creative Skills",
+        "value": "Graphic Design, Video Editing, Photography, Painting, Audio Mixing"
+      },
+      {
+        "label": "Interests",
+        "value": "Traveling, Teaching, Coding, Music, Sports"
+      }
+    ]
+  },
+  "experience": {
+    "heading": "Experience",
+    "backgroundImage": "images/third.png",
+    "items": [
+      {
+        "date": "2021-2023",
+        "title": "Network Engineer",
+        "company": "SonicWall",
+        "bullets": [
+          "Provided expert support on configuring gateway antivirus, content filtering, application control, Geo-IP, Botnet filtering, and Anti-Spam.",
+          "Assisted customers in setting up firewalls, switches, access points, and endpoint security.",
+          "Collaborated with development teams to fix bugs in network devices and deliver firmware updates.",
+          "Supported VPNs, SD-WAN, and OSPF routing across global networks.",
+          "Worked with IPS teams to add signatures and resolve false positives.",
+          "Managed escalations, created knowledge articles, and tested customer support portals."
+        ]
+      },
+      {
+        "date": "2020",
+        "title": "Graduate Trainee",
+        "company": "Maven Silicon",
+        "bullets": [
+          "Designed and verified a 1x3 router, focusing on RTL design and UVM verification using Verilog and SystemVerilog.",
+          "Developed the AHB-APB bridge project, ensuring efficient protocol conversion and system integration.",
+          "Implemented a FIFO depth calculation project to optimize buffer sizes and enhance data flow efficiency.",
+          "Gained expertise in data integrity, error correction, and secure hardware design across multiple projects.",
+          "Acquired skills in advanced SystemVerilog and UVM for hardware verification."
+        ]
+      }
+    ]
+  },
+  "projects": {
+    "heading": "Projects",
+    "backgroundImage": "images/serverblue.png",
+    "items": [
+      {
+        "year": "2025",
+        "title": "Cloud based SOC lab",
+        "subtitle": "Personal Project",
+        "link": "https://github.com/shubodaya/HomeSOC"
+      },
+      {
+        "year": "2024",
+        "title": "SD Firewall for Automobiles",
+        "subtitle": "Masters Project",
+        "link": "https://github.com/shubodaya/SD-Firewall-for-Automotive-Network"
+      },
+      {
+        "year": "2024",
+        "title": "Dam Safety Control System",
+        "subtitle": "Maven Silicon",
+        "link": "https://github.com/shubodaya/Dam-Safety-Control-System"
+      },
+      {
+        "year": "2023",
+        "title": "3D Portfolio Website",
+        "subtitle": "Personal Project",
+        "link": "https://github.com/shubodaya/3D-Portfolio"
+      },
+      {
+        "year": "2022",
+        "title": "Knowledge Based Articles",
+        "subtitle": "SonicWall",
+        "link": ""
+      },
+      {
+        "year": "2021",
+        "title": "Router Design and Verification",
+        "subtitle": "Maven Silicon",
+        "link": "https://github.com/shubodaya/1x3-Router"
+      },
+      {
+        "year": "2020",
+        "title": "Emergency Activation in Automobiles",
+        "subtitle": "Bachelors Project",
+        "link": "https://github.com/shubodaya/Emergency-Activation-in-Automobiles-Using-IOT"
+      }
+    ],
+    "moreButtonLabel": "More Projects",
+    "moreButtonUrl": "https://github.com/shubodaya?tab=repositories"
+  },
+  "education": {
+    "heading": "Education",
+    "items": [
+      {
+        "date": "2023-2024",
+        "title": "MSc in Cybersecurity",
+        "institution": "Swansea University",
+        "detail": "Grade: Distinction"
+      },
+      {
+        "date": "2016-2020",
+        "title": "BEng in Electronics and Communication",
+        "institution": "Vidya Vardhaka College of Engineering",
+        "detail": "Grade: First class distinction."
+      },
+      {
+        "date": "2014-2016",
+        "title": "Higher Secondary School",
+        "institution": "Expert Pre-University College (PCMB)",
+        "detail": "Grade: First class distinction."
+      }
+    ],
+    "certificationsHeading": "Certifications",
+    "certificationsBackgroundImage": "images/server.png",
+    "certifications": [
+      {
+        "title": "CompTIA Network+",
+        "imagePath": "images/networkplus.png",
+        "link": "https://www.credly.com/badges/cbea159f-fb69-4035-bbb3-5e29eef4bcb7/linked_in_profile"
+      },
+      {
+        "title": "CompTIA Security+",
+        "imagePath": "images/securityplus.png",
+        "link": "https://www.credly.com/badges/9e429443-91ec-4a7e-8caf-f38af95632e5/linked_in_profile"
+      },
+      {
+        "title": "ISC2 Certified in Cybersecurity",
+        "imagePath": "images/isc2.png",
+        "link": "https://www.credly.com/badges/f3e7e8c8-816a-4f31-8575-731e85366305/linked_in_profile"
+      },
+      {
+        "title": "Microsoft AZ-900",
+        "imagePath": "images/az900.png",
+        "link": "https://learn.microsoft.com/en-us/users/shubodaya-4297/credentials/dec154df18148fe2?ref=https%3A%2F%2Fwww.linkedin.com%2F"
+      },
+      {
+        "title": "Google Cybersecurity Professional",
+        "imagePath": "images/google-cybersecurity.png",
+        "link": "https://www.credly.com/badges/41d5a54b-7a6a-4c52-ae5e-e5d7bd06be7d/linked_in_profile"
+      },
+      {
+        "title": "Google IT Support Professional",
+        "imagePath": "images/google-it.png",
+        "link": "https://www.credly.com/badges/f92f11cf-31d7-4f18-84bf-9f013c2c97d5/linked_in_profile"
+      },
+      {
+        "title": "Google IT Automation with Python",
+        "imagePath": "images/python.png",
+        "link": "https://www.credly.com/badges/961ba799-7e07-4427-bbdc-30e12ee23089/linked_in_profile"
+      }
+    ],
+    "resumeButtonLabel": "Download Resume",
+    "resumeButtonUrl": "https://docs.google.com/document/d/1eO-7W3Sl7e0KSYvtoZzb8vfDJgP5zD4JU41VVvzUFfM/edit?usp=sharing"
+  }
+}

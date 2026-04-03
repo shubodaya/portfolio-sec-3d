@@ -2,6 +2,9 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
+const withBase = (path) =>
+  `${import.meta.env.BASE_URL}${String(path).replace(/^\/+/, '')}`;
+
 // Function to set up the 3D environment for a model
 function setup3DModel(
   containerId,
@@ -123,7 +126,7 @@ function initModels() {
     gamingContainer.dataset.modelReady = '1';
     setup3DModel(
       'gaming-model-container',
-      'threeD/gaming_setup/',
+      withBase('threeD/gaming_setup/'),
       'scene.gltf',
       [0, -50, 0], // Position
       [15, 15, 15], // Scale
@@ -141,7 +144,7 @@ function initModels() {
     earthContainer.dataset.modelReady = '1';
     setup3DModel(
       'model3-container', // Container ID
-      'threeD/earth_orbit/', // Path to model files
+      withBase('threeD/earth_orbit/'), // Path to model files
       'scene.gltf', // Model file
       [0, 0, 0], // Position (x, y, z)
       [700, 700, 700], // Scale (x, y, z)

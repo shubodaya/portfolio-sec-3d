@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
+import { resolveAssetUrl } from "../siteContent";
 
-export default function Navbar() {
+export default function Navbar({ siteContent }) {
+  const ownerName = siteContent?.meta?.ownerName || "Portfolio";
+  const brandIcon = resolveAssetUrl(siteContent?.meta?.brandIconPath);
+
   return (
     <nav
       className="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target"
@@ -8,15 +12,17 @@ export default function Navbar() {
     >
       <div className="container">
         <Link className="navbar-brand d-flex align-items-center" to="/">
-          <img
-            src="/portfolio-sec-3d/favicon_io/favicon-32x32.png"
-            alt="Shubodaya H N"
-            className="brand-icon"
-            width="20"
-            height="20"
-            loading="eager"
-          />
-          <span>Shubodaya H N</span>
+          {brandIcon ? (
+            <img
+              src={brandIcon}
+              alt={ownerName}
+              className="brand-icon"
+              width="20"
+              height="20"
+              loading="eager"
+            />
+          ) : null}
+          <span>{ownerName}</span>
         </Link>
         <button
           className="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle"

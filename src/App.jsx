@@ -1,5 +1,7 @@
-import { Routes, Route, useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
+import AdminPortal from "./AdminPortal.jsx";
+import "./admin.css";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 import Home from "./pages/Home.jsx";
@@ -7,6 +9,7 @@ import About from "./pages/About.jsx";
 import Experience from "./pages/Experience.jsx";
 import Projects from "./pages/Projects.jsx";
 import Education from "./pages/Education.jsx";
+import { createDefaultSiteContent, mergeSiteContent } from "./siteContent";
 
 function ScrollManager() {
   const { pathname, hash } = useLocation();
@@ -39,16 +42,37 @@ function ScrollManager() {
 }
 
 export default function App() {
+  const location = useLocation();
+  const [publishedContent] = useState(() => createDefaultSiteContent());
+  const [siteContent, setSiteContent] = useState(() => createDefaultSiteContent());
+  const isAdminRoute =
+    location.pathname === "/admin" || location.pathname === "/admin/";
+
+  useEffect(() => {
+    document.title =
+      siteContent?.meta?.siteTitle || "portfolio-sec-3d";
+  }, [siteContent]);
+
+  if (isAdminRoute) {
+    return (
+      <AdminPortal
+        defaultContent={publishedContent}
+        onContentSaved={(nextContent) => setSiteContent(mergeSiteContent(nextContent))}
+      />
+    );
+  }
+
   return (
     <>
       <ScrollManager />
-      <Navbar />
+      <Navbar siteContent={siteContent} />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/experience" element={<Experience />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/education" element={<Education />} />
+        <Route path="/" element={<Home siteContent={siteContent} />} />
+        <Route path="/about" element={<About siteContent={siteContent} />} />
+        <Route path="/experience" element={<Experience siteContent={siteContent} />} />
+        <Route path="/projects" element={<Projects siteContent={siteContent} />} />
+        <Route path="/education" element={<Education siteContent={siteContent} />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <Footer />
       <div id="ftco-loader" className="show fullscreen">

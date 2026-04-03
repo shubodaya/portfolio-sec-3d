@@ -1,8 +1,8 @@
 {
-  "name": "portfolio-sec-3d-react",
+  "name": "portfolio-sec-3d",
   "private": true,
   "version": "0.1.0",
-  "homepage": "https://github.com/shubodaya/portfolio-sec-3d",
+  "homepage": "https://shubodaya.github.io/portfolio-sec-3d/",
   "repository": {
     "type": "git",
     "url": "https://github.com/shubodaya/portfolio-sec-3d.git"
@@ -11,6 +11,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "postbuild": "node scripts/prepare-pages-build.mjs",
     "preview": "vite preview"
   },
   "dependencies": {
