@@ -363,12 +363,10 @@ export default function Home({ siteContent }) {
               <div className="col-12 col-lg-6 ftco-animate order-lg-1">
                 <h2 style={{ textAlign: "center" }}>{contact.formHeading}</h2>
                 <div className="que" id="send-message">
-                  <form action="https://api.web3forms.com/submit" method="POST">
-                    <input
-                      type="hidden"
-                      name="access_key"
-                      value={contact.web3formsAccessKey}
-                    />
+                  <form action="https://formsubmit.co/contact@shubodaya.dev" method="POST">
+                    <input type="hidden" name="_subject" value="3D security portfolio contact form" />
+                    <input type="hidden" name="_template" value="table" />
+                    <input type="hidden" name="_captcha" value="false" />
                     <div className="row gy-4 gy-xl-5 p-4 p-xl-5">
                       <div className="col-12">
                         <label htmlFor="fullname" className="form-label">
